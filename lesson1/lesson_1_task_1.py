@@ -1,1 +1,3 @@
-print("test3")
+my_name = 'Содном'
+print(my_name)
+
