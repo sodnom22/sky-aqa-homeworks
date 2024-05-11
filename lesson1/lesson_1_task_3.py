@@ -1,4 +1,4 @@
-user_name = input("Содном")
-print("Привет," + user_name)
+user_name = input('Введите ваше имя: ')
+print('Привет, ' + user_name)
 
 
