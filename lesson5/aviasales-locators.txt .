@@ -1,8 +1,8 @@
-Локатор логотипа (html-елемент, содержащий в себе значок и слово "авиасейлс") - 
-<//a[contains(@href, 'aviasales')]//svg>
-Локатор поля Откуда - <#avia_form_origin-input >
-Локатор поля Куда - <#avia_form_destination-input>
-Локатор поля Когда - <body > div:nth-child(2) > div > div.s__MP3Uy8Md3yM6QWmzmVcl > div.s__aiO8AIOOZINCoSeC0302.s__lzZDqimsnIRvfab2q6Rd > div.s__FKt_57Z3lbn26yIqnsch.s__gBXvWwOiyrcJ_iHhUhbL > div > form > div.s__pSfvSdtvFETyJ2G3nPGM.s___wPneQkPvnkZOZslP5bw.s__mtImpdxqmb3FtpyrTsgk.s__kGy7Tb3xVjEevcmv8PDu > div > button.s__dF0HgOsMMy2ofyXcvtH_.s__baueeRnAUu_J55n12MRS.s__QOH8_RMDyCm4BxeyrqOt > div>
-Локатор поля Обратно - <body > div:nth-child(2) > div > div.s__MP3Uy8Md3yM6QWmzmVcl > div.s__aiO8AIOOZINCoSeC0302.s__lzZDqimsnIRvfab2q6Rd > div.s__FKt_57Z3lbn26yIqnsch.s__gBXvWwOiyrcJ_iHhUhbL > div > form > div.s__pSfvSdtvFETyJ2G3nPGM.s___wPneQkPvnkZOZslP5bw.s__mtImpdxqmb3FtpyrTsgk.s__kGy7Tb3xVjEevcmv8PDu > div > button.s__dF0HgOsMMy2ofyXcvtH_.s__baueeRnAUu_J55n12MRS.s__qO2qUuaHHBMsAgKGqoWL.s__iyTMhvd48siOyWFvga_5 > div>
-Локатор чек-бокса "Открыть Ostrovok.ru в новой вкладке" - <body > div:nth-child(2) > div > div.s__MP3Uy8Md3yM6QWmzmVcl > div.s__aiO8AIOOZINCoSeC0302.s__lzZDqimsnIRvfab2q6Rd > div.s__FKt_57Z3lbn26yIqnsch.s__gBXvWwOiyrcJ_iHhUhbL > div > form > footer > div > label > span.s__hozqdl8_u1owv7f58Vov.s__HLWgkBC9TdsHSs4C7GgX.s__ELmBA_D9PIkOa0s2GKhD>
-Локатор кнопки Найти билеты - <body > div:nth-child(2) > div > div.s__MP3Uy8Md3yM6QWmzmVcl > div.s__aiO8AIOOZINCoSeC0302.s__lzZDqimsnIRvfab2q6Rd > div.s__FKt_57Z3lbn26yIqnsch.s__gBXvWwOiyrcJ_iHhUhbL > div > form > div.s__Yzjov8gtTIwlOo3oK8L3 > button>
+Локатор логотипа (html-елемент, содержащий в себе значок и слово "авиасейлс") - $("svg[data-test-id='logo-text']")
+Локатор поля Откуда - $("input[placeholder='Откуда']")
+Локатор поля Куда - $("input[placeholder='Куда']")
+Локатор поля Когда - $("div[data-test-id='start-date-field']")
+Локатор поля Обратно - $("div[data-test-id='end-date-value']")
+Локатор чек-бокса "Открыть Ostrovok.ru в новой вкладке" - $("span[data-test-id='text']")
+Локатор кнопки Найти билеты - $("button[data-test-id='form-submit']")
+
