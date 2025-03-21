@@ -1,5 +1,0 @@
-Локатор кнопки Войти - $("span.tsCompact300XSmall")
-Локатор кнопки Заказы - document.evaluate("//span[contains(text(),'Заказы')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-Локатор ссылки OZON Job (в футере) - document.querySelector("a[href*='job.ozon.ru']")
-Локатор выбора валюты (верхний левый угол страницы) - <на сайте нет такой кнопки или ссылки>
-Локатор выпадашки Везде (в поисковой строке) - document.querySelector("span[title='Везде']")

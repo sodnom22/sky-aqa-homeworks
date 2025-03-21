@@ -1,8 +1,0 @@
-Локатор логотипа (html-елемент, содержащий в себе значок и слово "авиасейлс") - $("svg[data-test-id='logo-text']")
-Локатор поля Откуда - $("input[placeholder='Откуда']")
-Локатор поля Куда - $("input[placeholder='Куда']")
-Локатор поля Когда - $("div[data-test-id='start-date-field']")
-Локатор поля Обратно - $("div[data-test-id='end-date-value']")
-Локатор чек-бокса "Открыть Ostrovok.ru в новой вкладке" - $("span[data-test-id='text']")
-Локатор кнопки Найти билеты - $("button[data-test-id='form-submit']")
-
