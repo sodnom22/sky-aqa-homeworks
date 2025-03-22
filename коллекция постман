@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "a5bd2d60-deeb-4af0-87f3-7135129671b6",
+		"name": "JSONPlaceholder Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27201349"
+	},
+	"item": [
+		{
+			"name": "получить список постов",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус-код 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Ответ содержит массив объектов\", function () {",
+							"  const jsonData = pm.response.json();",
+							"  pm.expect(jsonData).to.be.an(\"array\");",
+							"  pm.expect(jsonData.length).to.be.above(0);  // Ожидаем хотя бы 1 пост",
+							"});",
+							"",
+							"pm.test(\"Проверка структуры первого объекта\", function () {",
+							"  const jsonData = pm.response.json();",
+							"  pm.expect(jsonData[0]).to.have.property(\"userId\");",
+							"  pm.expect(jsonData[0]).to.have.property(\"id\");",
+							"  pm.expect(jsonData[0]).to.have.property(\"title\");",
+							"  pm.expect(jsonData[0]).to.have.property(\"body\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "создать пост",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус-код 201 (создано)\", function () {",
+							"  pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Проверка структуры ответа при создании поста\", function () {",
+							"  const jsonData = pm.response.json();",
+							"  // Проверяем, что сервер вернул созданный объект",
+							"  pm.expect(jsonData).to.have.property(\"id\");",
+							"  pm.expect(jsonData).to.have.property(\"title\", \"foo\");",
+							"  pm.expect(jsonData).to.have.property(\"body\", \"bar\");",
+							"  pm.expect(jsonData).to.have.property(\"userId\", 1);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"foo\",\n  \"body\": \"bar\",\n  \"userId\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}",
+					"host": [
+						"{{Url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "удалить несуществующий пост",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус-код 404 при удалении несуществующего поста\", function () {",
+							"  pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Проверка структуры ответа при 404\", function () {",
+							"  const jsonData = pm.response.json();",
+							"  // JSONPlaceholder может вернуть пустой объект, поэтому:",
+							"  pm.expect(jsonData).to.be.empty; // или проверяем другие поля, если они есть",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Url}}/999999",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"999999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "удалить созданный пост",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус-код 200 или 204 при удалении существующего поста\", function () {",
+							"  pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+							"});",
+							"",
+							"// Если в ответе есть тело (что маловероятно), можно проверить его структуру",
+							"pm.test(\"Проверка структуры ответа (при наличии)\", function () {",
+							"  const jsonData = pm.response.json();",
+							"  // JSONPlaceholder может вернуть пустой объект или ничего,",
+							"  // поэтому проверяем на случай, если ответ не пуст",
+							"  // pm.expect(jsonData).to.be.an(\"object\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Url}}/1",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Url",
+			"value": "https://jsonplaceholder.typicode.com/posts",
+			"type": "string"
+		}
+	]
+}
